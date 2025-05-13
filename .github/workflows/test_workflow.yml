@@ -59,13 +59,9 @@ jobs:
       - name: Install Pandoc
         uses: pandoc/actions/setup@v1
 
-      # Step 4: Install renv and restore dependencies integrated with github cache
-      - name: Install renv and restore dependencies
-        uses: r-lib/actions/setup-renv@v2
-
-      # Step 5: Render Bookdown
+      # Step 5: Render rmarkdown
       - name: Render Bookdown
-        run: R -e 'bookdown::render_book()'
+        run: R -e 'render("codas-test.Rmd", "all")'
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
