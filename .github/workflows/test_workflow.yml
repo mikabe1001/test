@@ -61,7 +61,7 @@ jobs:
 
       # Step 5: Render rmarkdown
       - name: Render Bookdown
-        run: R -e 'render("codas-test.Rmd", "all")'
+        run: R -e 'rmarkdown::render("codas-test.Rmd", "all")'
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
