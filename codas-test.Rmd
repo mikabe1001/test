@@ -1,0 +1,90 @@
+---
+title: "R Markdown Feature Showcase"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true        # show table of contents
+    toc_float: true  # keep the ToC floating on the left
+    number_sections: true
+    toc_collapsed: false
+---
+
+<!-- Full‑width layout tweak -->
+<style>
+/* Make the primary container span the entire viewport */
+.main-container,
+.container-fluid,
+.container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* Override Bootstrap row constraints so content fills the space to the right of the floating ToC */
+.main-container > .row,
+.main-container .row,
+body.has-float-toc .main-container > .row {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* Ensure any column inside that row uses the whole width */
+.main-container .row > [class*='col-'] {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+</style>
+
+# Introduction
+Welcome to this little tour of what **R Markdown** can do. Each chapter demonstrates one handy capability.
+
+# Embedding a YouTube Video
+Below we embed a YouTube clip directly in the page using raw HTML (kept outside of a code chunk so the iframe renders correctly):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Linking Images from the Internet
+Markdown syntax is enough to pull in a remote image:
+
+![R logo from the web](https://www.r-project.org/logo/Rlogo.png)
+
+# Linking Images from Local Folders
+Place any image (e.g. `myplot.png`) in a folder called `images/` next to this Rmd—and refer to it relatively:
+
+![A local figure](images/cat.jpg)
+
+# Inline R Code
+You can evaluate R inline—today is `r format(Sys.Date(), "%A, %B %d, %Y")`.
+
+# Basic Plotting
+A standard R plot renders as a self-contained graphic. Captions come from the chunk option `fig.cap`.
+
+```{r pressure-plot, fig.cap="Pressure data visualised"}
+plot(pressure)
+```
+
+# Data Tables
+Knitr’s `kable()` (or **DT**) prints data frames nicely:
+
+```{r cars-table}
+knitr::kable(head(cars), caption = "First six rows of the *cars* dataset")
+```
+
+# Tabs Example {.tabset}
+## First tab
+You can organise content into tabs with a `.tabset` section.
+
+## Second tab
+Each sub-heading inside the tabset becomes a new tab.
+
+# Including External HTML
+The `include_url()` helper drops any webpage inline (handy for live dashboards):
+
+```{r include-r}
+knitr::include_url("https://www.r-project.org")
+```
+
+# Conclusion
+That’s a quick sampler. Knit the document (⌘+Shift+K / Ctrl+Shift+K) to see everything in action. Tweak, extend, and have fun!
